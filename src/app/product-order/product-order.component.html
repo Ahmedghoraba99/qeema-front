@@ -1,0 +1,44 @@
+<div>
+  <h2>Products</h2>
+  <table class="table table-stripped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Add</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>
+          <button
+            class="btn btn-primary"
+            (click)="addToOrder(product)"
+            [disabled]="product.quantity === 0"
+          >
+            <i class="bi bi-bag-plus-fill"></i> Add
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Order Items</h2>
+  <ul>
+    <li *ngFor="let item of orderItems">
+      Product ID: {{ item.productId }}, Quantity: {{ item.quantity }}
+    </li>
+  </ul>
+
+  <button
+    (click)="submitOrder()"
+    [disabled]="orderItems.length === 0"
+    class="btn btn-primary p-2"
+  >
+    Submit Order
+  </button>
+</div>

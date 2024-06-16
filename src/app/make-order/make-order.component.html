@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="container row" *ngFor="let order of orders">
+    <div class="col">Order {{ order.id }}</div>
+    <div class="col">
+      <span class="text-danger">Coustmer:</span> {{ order.user.name }}
+    </div>
+    <div>
+      <div class="container">
+        <div>Products</div>
+        <div>
+          <table
+            class="table table-dark table-striped table-bordered table-hover"
+          >
+            <thead>
+              <th class="text-dark">#Id</th>
+              <th class="text-dark">Quantity</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of order.products; let i = index">
+                <!-- <td>{{ product.id }}</td> -->
+                <td>{{ i + 1 }}</td>
+                <td>{{ product.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr class="bg-dark p-1 rounded-pill" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
