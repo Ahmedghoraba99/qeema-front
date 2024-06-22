@@ -1,4 +1,7 @@
 <div class="container">
+  <h2 class="text-center h2" *ngIf="orders.length === 0">
+    You didn't make any orders!
+  </h2>
   <div class="container row" *ngFor="let order of orders">
     <div class="col">Order {{ order.id }}</div>
     <div class="col">

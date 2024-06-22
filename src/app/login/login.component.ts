@@ -24,6 +24,10 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required]),
   });
 
+  ngOnInit(): void {
+    localStorage.clear();
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       const credentials = {
@@ -31,18 +35,14 @@ export class LoginComponent {
         password: this.loginForm.get('password')?.value as string,
       };
 
-      console.log(credentials);
       this.authService.login(credentials).subscribe({
         next: (data: any) => {
-          console.log(data);
-
           if (this.authService.isLoggedIn()) {
             this.router.navigate(['/make-order']);
           }
-          console.log(data);
         },
         error: (error) => {
-          console.error('Login failed', error);
+          alert(error.error.message);
         },
       });
     }
