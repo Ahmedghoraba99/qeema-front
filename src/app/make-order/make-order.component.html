@@ -5,7 +5,7 @@
   <div class="container row" *ngFor="let order of orders">
     <div class="col">Order {{ order.id }}</div>
     <div class="col">
-      <span class="text-danger">Coustmer:</span> {{ order.user.name }}
+      <span class="text-danger">Coustmer:</span> {{ order.coustmer }}
     </div>
     <div>
       <div class="container">
@@ -19,7 +19,7 @@
               <th class="text-dark">Quantity</th>
             </thead>
             <tbody>
-              <tr *ngFor="let product of order.products; let i = index">
+              <tr *ngFor="let product of order.orderProducts; let i = index">
                 <!-- <td>{{ product.id }}</td> -->
                 <td>{{ i + 1 }}</td>
                 <td>{{ product.quantity }}</td>
